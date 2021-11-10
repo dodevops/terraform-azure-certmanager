@@ -1,12 +1,8 @@
-# Terraform managemen of cert-manager on AKS
+# Terraform management of cert-manager on AKS
 
 ## Introduction
 
 This module manages cert-manager on AKS (Azure Kubernetes Service)
-
-## K8S requirements
-
-This module requires Kubernetes >= 1.19, see https://cert-manager.io/docs/installation/helm/#option-2-install-crds-as-part-of-the-helm-release
 
 ## Usage
 
@@ -19,17 +15,20 @@ module "azure-basics" {
 }
 ```
 
-
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-No requirements.
+The following requirements are needed by this module:
+
+- helm (>= 2.4.1)
 
 ## Providers
 
 The following providers are used by this module:
 
-- azurerm
+- helm (>= 2.4.1)
+
+- kubernetes
 
 ## Modules
 
@@ -39,75 +38,53 @@ No modules.
 
 The following resources are used by this module:
 
-- [azurerm_management_lock.resource-group-level](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/management_lock) (resource)
-- [azurerm_proximity_placement_group.ppg](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/proximity_placement_group) (resource)
-- [azurerm_resource_group.azure-resource-group](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) (resource)
+- [helm_release.cert-manager](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) (resource)
+- [helm_release.cert-manager-issuers](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) (resource)
+- [kubernetes_namespace.cert-manager](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace) (resource)
 
 ## Required Inputs
 
-The following input variables are required:
-
-### location
-
-Description: The azure location used for azure
-
-Type: `string`
-
-### project
-
-Description: Three letter project key
-
-Type: `string`
-
-### stage
-
-Description: Stage for this ressource group
-
-Type: `string`
+No required inputs.
 
 ## Optional Inputs
 
 The following input variables are optional (have default values):
 
-### lock
+### cert-manager-issuers-version
 
-Description: Lock ressource group for deletion
+Description: Version of the Cert-Manager-issuers helm chart to use
 
-Type: `bool`
+Type: `string`
 
-Default: `true`
+Default: `"0.2.2"`
 
-### manage\_proximity\_placement\_group
+### cert-manager-version
 
-Description: Manage a proximity placement group for the resource group
+Description: Version of the Cert-Manager helm chart to use
 
-Type: `bool`
+Type: `string`
 
-Default: `true`
+Default: `"v1.5.4"`
 
-### tags
+### cluster-issuers-yaml
 
-Description: Map of tags for the resources
+Description: The YAML code to define cluster issuers for cert-manager. Example: https://github.com/adfinis-sygroup/helm-charts/blob/master/charts/cert-manager-issuers/examples/letsencrypt-clusterissuers.yaml
 
-Type: `map(any)`
+Type: `string`
 
-Default: `{}`
+Default: `""`
+
+### issuers-yaml
+
+Description: The YAML code to define issuers for cert-manager. Example: https://github.com/adfinis-sygroup/helm-charts/blob/master/charts/cert-manager-issuers/examples/disable-issuers.yaml
+
+Type: `string`
+
+Default: `""`
 
 ## Outputs
 
-The following outputs are exported:
-
-### location
-
-Description: The location input variable (can be used for dependency resolution)
-
-### ppg\_id
-
-Description: The ID of the generated proximity placement group
-
-### resource\_group
-
-Description: The name of the generated resource group
+No outputs.
 <!-- END_TF_DOCS -->
 
 ## Development
