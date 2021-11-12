@@ -1,5 +1,3 @@
-# Installs and configures cert-manager
-
 resource "kubernetes_namespace" "cert-manager" {
   metadata {
     name = "cert-manager"
