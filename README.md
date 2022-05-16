@@ -82,6 +82,38 @@ Type: `string`
 
 Default: `""`
 
+### set-list
+
+Description: A list of settings to apply to on the helm chart using its parameter 'set { }'. Example:
+```
+  set-list = [
+    {
+      "name"  = "prometheus.enabled",
+      "value" = "false",
+      "type"  = "auto"
+    },
+  ]
+```
+
+Type: `list(object({name = string, value = string, type = string}))`
+
+Default: `[]`
+
+### values
+
+Description: A list of values to apply on the helm chart using its parameter 'values = [...]'. Example:
+```
+  values = [
+    "<yaml>",
+  ]
+```
+
+Type: `list(string)`
+
+Default: `[]`
+
+###
+
 ## Outputs
 
 No outputs.

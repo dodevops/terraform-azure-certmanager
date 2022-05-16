@@ -21,3 +21,19 @@ variable "cluster-issuers-yaml" {
   default     = ""
   description = "The YAML code to define cluster issuers for cert-manager. Example: https://github.com/adfinis-sygroup/helm-charts/blob/master/charts/cert-manager-issuers/examples/letsencrypt-clusterissuers.yaml"
 }
+
+variable "set-list" {
+  type = list(object({
+    name = string,
+    value = string,
+    type = string,
+  }))
+  default = []
+  description = "A list of settings to apply to on the helm chart using its parameter 'set { }' "
+}
+
+variable "values" {
+  type = list(string)
+  default = []
+  description = "A list of values to apply on the helm chart using its parameter 'values = [...]' "
+}
