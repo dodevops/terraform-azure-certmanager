@@ -82,6 +82,44 @@ Type: `string`
 
 Default: `""`
 
+### set-list
+
+Description: A list of additional settings to apply to the helm chart using the terraform `set{}` parameter. Example:
+```
+  set-list = [
+    {
+      "name"  = "prometheus.enabled",
+      "value" = "false",
+      "type"  = "auto"
+    },
+  ]
+```
+
+Type:
+
+```hcl
+list(object({
+    name  = string,
+    value = string,
+    type  = string,
+  }))
+```
+
+Default: `[]`
+
+### values
+
+Description: A list of additional values to apply to the helm chart using the  'values = [...]' parameter. Example:
+```
+  values = [
+    "<yaml>",
+  ]
+```
+
+Type: `list(string)`
+
+Default: `[]`
+
 ## Outputs
 
 No outputs.

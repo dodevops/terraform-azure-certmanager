@@ -16,6 +16,18 @@ resource "helm_release" "cert-manager" {
     name  = "installCRDs"
     value = "true"
   }
+
+  dynamic "set" {
+    for_each = var.set-list
+    content {
+      name  = lookup(set.value, "name", null)
+      value = lookup(set.value, "value", null)
+      type  = lookup(set.value, "type", null)
+    }
+  }
+
+  values = var.values
+
 }
 
 locals {
