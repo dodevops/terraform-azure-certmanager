@@ -24,16 +24,34 @@ variable "cluster-issuers-yaml" {
 
 variable "set-list" {
   type = list(object({
-    name = string,
+    name  = string,
     value = string,
-    type = string,
+    type  = string,
   }))
-  default = []
-  description = "A list of settings to apply to on the helm chart using its parameter 'set { }' "
+  default     = []
+  description = <<EOT
+A list of additional settings to apply to the helm chart using the terraform `set{}` parameter. Example:
+```
+  set-list = [
+    {
+      "name"  = "prometheus.enabled",
+      "value" = "false",
+      "type"  = "auto"
+    },
+  ]
+```
+EOT
 }
 
 variable "values" {
-  type = list(string)
-  default = []
-  description = "A list of values to apply on the helm chart using its parameter 'values = [...]' "
+  type        = list(string)
+  default     = []
+  description = <<EOT
+A list of additional values to apply to the helm chart using the  'values = [...]' parameter. Example:
+```
+  values = [
+    "<yaml>",
+  ]
+```
+EOT
 }

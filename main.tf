@@ -18,11 +18,11 @@ resource "helm_release" "cert-manager" {
   }
 
   dynamic "set" {
-  for_each = var.set-list
+    for_each = var.set-list
     content {
-      name = lookup(set.value, "name", null)
+      name  = lookup(set.value, "name", null)
       value = lookup(set.value, "value", null)
-      type = lookup(set.value, "type", null)
+      type  = lookup(set.value, "type", null)
     }
   }
 

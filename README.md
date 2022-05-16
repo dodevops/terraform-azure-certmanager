@@ -84,7 +84,7 @@ Default: `""`
 
 ### set-list
 
-Description: A list of settings to apply to on the helm chart using its parameter 'set { }'. Example:
+Description: A list of additional settings to apply to the helm chart using the terraform `set{}` parameter. Example:
 ```
   set-list = [
     {
@@ -95,13 +95,21 @@ Description: A list of settings to apply to on the helm chart using its paramete
   ]
 ```
 
-Type: `list(object({name = string, value = string, type = string}))`
+Type:
+
+```hcl
+list(object({
+    name  = string,
+    value = string,
+    type  = string,
+  }))
+```
 
 Default: `[]`
 
 ### values
 
-Description: A list of values to apply on the helm chart using its parameter 'values = [...]'. Example:
+Description: A list of additional values to apply to the helm chart using the  'values = [...]' parameter. Example:
 ```
   values = [
     "<yaml>",
@@ -111,8 +119,6 @@ Description: A list of values to apply on the helm chart using its parameter 'va
 Type: `list(string)`
 
 Default: `[]`
-
-###
 
 ## Outputs
 
