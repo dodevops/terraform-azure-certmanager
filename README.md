@@ -20,13 +20,13 @@ module "azure-basics" {
 
 The following requirements are needed by this module:
 
-- helm (>= 2.4.1)
+- helm (>= 2.4.1, < 3.0.0)
 
 ## Providers
 
 The following providers are used by this module:
 
-- helm (>= 2.4.1)
+- helm (>= 2.4.1, < 3.0.0)
 
 - kubernetes
 
