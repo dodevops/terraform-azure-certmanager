@@ -1,12 +1,12 @@
 variable "cert-manager-version" {
   type        = string
-  default     = "v1.5.4"
+  default     = "v1.20.0"
   description = "Version of the Cert-Manager helm chart to use"
 }
 
 variable "cert-manager-issuers-version" {
   type        = string
-  default     = "0.2.2"
+  default     = "0.3.0"
   description = "Version of the Cert-Manager-issuers helm chart to use"
 }
 

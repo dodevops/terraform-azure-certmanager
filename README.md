@@ -20,13 +20,13 @@ module "azure-basics" {
 
 The following requirements are needed by this module:
 
-- helm (>= 2.4.1, < 3.0.0)
+- helm (>= 3.0.0)
 
 ## Providers
 
 The following providers are used by this module:
 
-- helm (>= 2.4.1, < 3.0.0)
+- helm (>= 3.0.0)
 
 - kubernetes
 
@@ -56,7 +56,7 @@ Description: Version of the Cert-Manager-issuers helm chart to use
 
 Type: `string`
 
-Default: `"0.2.2"`
+Default: `"0.3.0"`
 
 ### cert-manager-version
 
@@ -64,7 +64,7 @@ Description: Version of the Cert-Manager helm chart to use
 
 Type: `string`
 
-Default: `"v1.5.4"`
+Default: `"v1.20.0"`
 
 ### cluster-issuers-yaml
 

@@ -12,22 +12,24 @@ resource "helm_release" "cert-manager" {
   version    = var.cert-manager-version
   namespace  = kubernetes_namespace.cert-manager.metadata.0.name
 
-  set {
-    name  = "installCRDs"
-    value = "true"
-  }
-
-  dynamic "set" {
-    for_each = var.set-list
-    content {
-      name  = lookup(set.value, "name", null)
-      value = lookup(set.value, "value", null)
-      type  = lookup(set.value, "type", null)
-    }
-  }
+  set = concat(
+    [
+      {
+        name  = "installCRDs"
+        value = true
+      }
+    ],
+    [
+      for s in var.set-list : {
+        name  = lookup(s, "name", null)
+        value = lookup(s, "value", null)
+        type  = lookup(s, "type", null)
+      }
+      if lookup(s, "name", null) != null && lookup(s, "value", null) != null
+    ]
+  )
 
   values = var.values
-
 }
 
 locals {
