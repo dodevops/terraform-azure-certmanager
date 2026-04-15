@@ -1,4 +1,4 @@
-resource "kubernetes_namespace" "cert-manager" {
+resource "kubernetes_namespace_v1" "cert-manager" {
   metadata {
     name = "cert-manager"
   }
@@ -10,7 +10,7 @@ resource "helm_release" "cert-manager" {
   repository = "https://charts.jetstack.io"
   chart      = "cert-manager"
   version    = var.cert-manager-version
-  namespace  = kubernetes_namespace.cert-manager.metadata.0.name
+  namespace  = kubernetes_namespace_v1.cert-manager.metadata.0.name
 
   set = concat(
     [
