@@ -22,13 +22,15 @@ The following requirements are needed by this module:
 
 - helm (>= 3.0.0)
 
+- kubernetes (>= 2.7.0)
+
 ## Providers
 
 The following providers are used by this module:
 
 - helm (>= 3.0.0)
 
-- kubernetes
+- kubernetes (>= 2.7.0)
 
 ## Modules
 
