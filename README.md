@@ -22,13 +22,15 @@ The following requirements are needed by this module:
 
 - helm (>= 3.0.0)
 
+- kubernetes (>= 2.7.0)
+
 ## Providers
 
 The following providers are used by this module:
 
 - helm (>= 3.0.0)
 
-- kubernetes
+- kubernetes (>= 2.7.0)
 
 ## Modules
 
@@ -40,7 +42,7 @@ The following resources are used by this module:
 
 - [helm_release.cert-manager](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) (resource)
 - [helm_release.cert-manager-issuers](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) (resource)
-- [kubernetes_namespace.cert-manager](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace) (resource)
+- [kubernetes_namespace_v1.cert-manager](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace_v1) (resource)
 
 ## Required Inputs
 
